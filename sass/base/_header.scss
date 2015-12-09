@@ -1,0 +1,13 @@
+.header {
+  $time: 1s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  transition: height $time ease-in-out;
+
+  &.reduce {
+    height: 20%;
+  }
+}
