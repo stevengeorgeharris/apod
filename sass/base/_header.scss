@@ -10,4 +10,26 @@
   &.reduce {
     height: 20%;
   }
+
+  .comet {
+    position: absolute;
+    top: 45%;
+    left: -10%;
+    width: 70px;
+    height: auto;
+
+    &.fly {
+      animation: fly 18s linear infinite;
+    }
+  }
+}
+
+@keyframes fly {
+  0% {
+    left: -10%;
+  }
+
+  100% {
+    left: 110%;
+  }
 }

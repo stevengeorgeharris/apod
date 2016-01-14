@@ -397,11 +397,20 @@ html, body {
   height: 100%;
 }
 
-h1 {
-  font-family: "Playfair Display', serif";
-  font-weight: 400;
-  letter-spacing: 1px;
-  font-size: 24px;
+body {
+  background-color: #fafafa;
+}
+
+.apod-image {
+  margin-bottom: 20px;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 20px;
+  font-weight: 300;
 }
 
 .header {
@@ -415,7 +424,25 @@ h1 {
 .header.reduce {
   height: 20%;
 }
+.header .comet {
+  position: absolute;
+  top: 45%;
+  left: -10%;
+  width: 70px;
+  height: auto;
+}
+.header .comet.fly {
+  animation: fly 18s linear infinite;
+}
 
+@keyframes fly {
+  0% {
+    left: -10%;
+  }
+  100% {
+    left: 110%;
+  }
+}
 .apod-image {
   position: relative;
   max-width: 800px;

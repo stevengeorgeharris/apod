@@ -1,6 +1,7 @@
-h1 {
-  font-family: $title-font;
-  font-weight: $font-medium;
-  letter-spacing: 1px;
-  font-size: 24px;
+p {
+  font-family: $main-font;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 20px;
+  font-weight: $font-light;
 }

@@ -50,15 +50,18 @@ var apod = {
   },
   updateImage: function () {
     var imageURL;
+    var $image = $('.apod-image img');
     if (this.sameImage === true) {
       imageURL = localStorage.getItem('image');
     } else {
       imageURL = returnedData.url;
     }
-    var $image = $('.apod-image img');
     setTimeout(function() {
-        $('.header').addClass('reduce');
+      $('.header').addClass('reduce');
     }, 1000);
+    setTimeout(function() {
+      $('.comet').addClass('fly');
+    }, 2000);
     $image.attr('src', imageURL);
   }
 };

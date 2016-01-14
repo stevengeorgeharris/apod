@@ -1,3 +1,11 @@
 html, body {
   height: 100%;
 }
+
+body {
+  background-color: $background;
+}
+
+.apod-image {
+  margin-bottom: $bottomGutter;
+}
