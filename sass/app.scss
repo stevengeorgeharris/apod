@@ -1,8 +1,8 @@
 // Browser defaults override
 @import "vendor/normalize";
-
+// Variables, mixins, functions
 @import "utilities/variables";
-
+// Site base styles
 @import "base/structure";
 @import "base/typography";
 @import "base/header";
