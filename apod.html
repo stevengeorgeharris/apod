@@ -3,17 +3,33 @@
   <head>
     <title>Astronomy Picture of the Day</title>
     <link rel="stylesheet" type="text/css" href="css/app.css">
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <div class="header">
       <h1 class="app-title">
-        Astronomy Picture of the Day
+        Astronomy Picture <span class="app-title--light">of the</span> Day
       </h1>
+      <div class="pop-open">
+        Information
+      </div>
+      <img class="comet" src="assets/comet.svg"/>
     </div>
     <div class="apod-image">
       <!-- API image -->
       <img src=""/>
+    </div>
+    <div class="apod-info close">
+      <div class="apod-info__container">
+        <div class="apod-info__close">Close</div>
+        <h1 class="apod-info__title"></h1>
+        <span class="apod-info__date"></span>
+        <p class="apod-info__text"></p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <a target="_blank" href="http://madebysteven.com">Made By Steven</a>
     </div>
 
     <script src="js/vendor/jquery-1.11.3.min.js"></script>

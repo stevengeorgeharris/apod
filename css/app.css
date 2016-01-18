@@ -393,35 +393,140 @@ th {
   padding: 0;
 }
 
+@keyframes fly {
+  0% {
+    left: -10%;
+  }
+  100% {
+    left: 110%;
+  }
+}
 html, body {
   height: 100%;
 }
 
+body {
+  background-color: #fafafa;
+}
+
+span {
+  display: block;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
 h1 {
-  font-family: "Playfair Display', serif";
   font-weight: 400;
-  letter-spacing: 1px;
-  font-size: 24px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 26px;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+  font-weight: 300;
+}
+a:visited {
+  color: inherit;
 }
 
 .header {
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100%;
   transition: height 1s ease;
+  padding: 40px;
 }
 .header.reduce {
   height: 20%;
+}
+.header .app-title {
+  margin-top: 0;
+}
+.header .app-title--light {
+  font-weight: 300;
+  display: inline-block;
+}
+.header .pop-open {
+  position: absolute;
+  right: 40px;
+  font-size: 2em;
+  font-weight: 400;
+  cursor: pointer;
+}
+.header .comet {
+  position: absolute;
+  top: 54%;
+  left: -10%;
+  width: 70px;
+  height: auto;
+}
+.header .comet.fly {
+  animation: fly 18s linear infinite;
 }
 
 .apod-image {
   position: relative;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 auto 10% auto;
 }
 .apod-image img {
   width: 100%;
   height: auto;
+}
+
+.apod-info {
+  height: 100%;
+  width: 100%;
+  background-color: #FED56C;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  opacity: 0;
+  overflow-y: scroll;
+  left: 100%;
+  transition: all 500ms ease-out;
+}
+.apod-info.open {
+  left: 0%;
+  opacity: 0.98;
+}
+.apod-info.close {
+  left: 100%;
+  opacity: 0;
+}
+.apod-info .apod-info__close {
+  position: absolute;
+  right: 40px;
+  font-size: 2em;
+  font-weight: 400;
+  cursor: pointer;
+}
+.apod-info .apod-info__container {
+  padding: 40px;
+}
+.apod-info .apod-info__container .apod-info__title {
+  margin: 0;
+  padding-bottom: 0;
+}
+.apod-info .apod-info__container .apod-info__text {
+  max-width: 800px;
+}
+
+.footer {
+  text-align: center;
+  margin: 40px;
+}
+.footer a {
+  font-weight: 300;
+  font-size: 1.5em;
 }

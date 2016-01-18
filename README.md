@@ -1,7 +1,7 @@
-### Astronomy Picture of the Day
+#### Astronomy Picture of the Day
 
-A Chrome extension which replaces the default tab with the Astronomy Picture of the Day (APOD).
+Is a Chrome extension which replaces the default tab with the Astronomy Picture of the Day (APOD).
 
-#### Under the hood
+We are using the recently released NASA API to retrieve the Astronomy Picture of the Day from the APOD endpoint.
 
-We are using the recently released NASA API to retrieve the APOD. 
+Why? Because who doesn't like Space.
