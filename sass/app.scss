@@ -2,8 +2,11 @@
 @import "vendor/normalize";
 // Variables, mixins, functions
 @import "utilities/variables";
+@import "utilities/keyframes";
 // Site base styles
 @import "base/structure";
 @import "base/typography";
 @import "base/header";
 @import "base/image";
+@import "base/pop";
+@import "base/footer";

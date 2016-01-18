@@ -2,18 +2,33 @@
   $time: 1s;
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100%;
   transition: height $time ease;
+  padding: 40px;
 
   &.reduce {
     height: 20%;
   }
 
+  .app-title {
+    margin-top: 0;
+    &--light {
+      font-weight: $font-light;
+      display: inline-block;
+    }
+  }
+
+  .pop-open {
+    position: absolute;
+    right: 40px;
+    font-size: 2em;
+    font-weight: $font-medium;
+    cursor: pointer;
+  }
+
   .comet {
     position: absolute;
-    top: 45%;
+    top: 54%;
     left: -10%;
     width: 70px;
     height: auto;
@@ -21,15 +36,5 @@
     &.fly {
       animation: fly 18s linear infinite;
     }
-  }
-}
-
-@keyframes fly {
-  0% {
-    left: -10%;
-  }
-
-  100% {
-    left: 110%;
   }
 }

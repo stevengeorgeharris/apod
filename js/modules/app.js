@@ -1,6 +1,7 @@
 /**
 * Astronomy Picture of the Day
 * @author Steven Harris
+* @version 1.0.0
 *
 */
 
@@ -9,6 +10,9 @@ var apod = {
     // Will replace with API data
   },
   storeImage: "",
+  storeTitle: "",
+  storeReturnedDate: "",
+  storeExplanation: "",
   sameImage: false,
   storeDate: localStorage.date,
   url: "https://api.nasa.gov/planetary/apod?concept_tags=True&api_key=SMSSVoBpeTlTKc8nGXKVcVThKkjHsZSvTx1Xq1Tj",
@@ -19,42 +23,52 @@ var apod = {
    * per day, as the image only updates once.
    *
    */
-  checkDate: function () {
+  checkDate: function() {
     var newDate = new Date();
     var month = newDate.getMonth();
-    var day = newDate.getDay();
+    var day = newDate.getDate();
     var checkThis = day + " " + month;
     if (checkThis === this.storeDate) {
       this.sameImage = true;
       this.updateImage();
+      this.updateInfo();
     } else {
       this.call(this.url);
       localStorage.setItem('date', checkThis);
     }
   },
-  init: function () {
+  init: function() {
     this.checkDate();
+    this.attach();
   },
-  call: function (url) {
+  call: function(url) {
     $.ajax({
       url: url
-    }).done(function (data) {
+    }).done(function(data) {
       returnedData = data;
       apod.updateImage();
+      apod.updateInfo();
       apod.storeLocally();
     });
   },
-  storeLocally: function () {
-    storeImage = returnedData.url; // Use local storage to store URL.
+  storeLocally: function() {
+    storeImage = returnedData.hdurl; // Use local storage to store URL.
+    storeTitle = returnedData.title;
+    storeReturnedDate = returnedData.date;
+    storeExplanation = returnedData.explanation;
+
     localStorage.setItem('image', storeImage);
+    localStorage.setItem('title', storeTitle);
+    localStorage.setItem('returnedDate', storeReturnedDate);
+    localStorage.setItem('explanation', storeExplanation);
   },
-  updateImage: function () {
+  updateImage: function() {
     var imageURL;
     var $image = $('.apod-image img');
     if (this.sameImage === true) {
       imageURL = localStorage.getItem('image');
     } else {
-      imageURL = returnedData.url;
+      imageURL = returnedData.hdurl;
     }
     setTimeout(function() {
       $('.header').addClass('reduce');
@@ -63,5 +77,40 @@ var apod = {
       $('.comet').addClass('fly');
     }, 2000);
     $image.attr('src', imageURL);
+  },
+  updateInfo: function() {
+    var $titleCont = $('.apod-info__title');
+    var $dateCont = $('.apod-info__date');
+    var $textCont = $('.apod-info__text');
+    var title, date, explanation;
+
+    if (this.sameImage === true) {
+      title = localStorage.getItem('title');
+      date = localStorage.getItem('returnedDate');
+      explanation = localStorage.getItem('explanation');
+    } else {
+        title = returnedData.title;
+        date = returnedData.date;
+        explanation = returnedData.explanation;
+    }
+
+    $titleCont.append(title);
+    $dateCont.append(date);
+    $textCont.append(explanation);
+  },
+  attach: function() {
+    var $popInfo = $('.apod-info');
+    var $popOpen = $('.pop-open');
+    var $popClose = $('.apod-info__close');
+
+    $popOpen.on('click', function() {
+      $popInfo.removeClass('close');
+      $popInfo.addClass('open');
+    });
+
+    $popClose.on('click', function() {
+      $popInfo.removeClass('open');
+      $popInfo.addClass('close');
+    });
   }
 };

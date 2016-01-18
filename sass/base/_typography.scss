@@ -1,7 +1,27 @@
-p {
+body {
   font-family: $main-font;
+}
+
+h1 {
+  font-weight: $font-medium;
+}
+
+p {
   font-size: 18px;
-  line-height: 24px;
+  line-height: 26px;
   margin-bottom: 20px;
   font-weight: $font-light;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+    font-weight: $font-light;
+  }
+
+  &:visited {
+    color: inherit;
+  }
 }
