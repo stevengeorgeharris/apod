@@ -4,8 +4,10 @@
   left: 50%;
   margin-left: -12px;
   width: 25px;
+  opacity: 1;
 
   &.blast-off {
     animation: blastOff 3s ease-out;
+    opacity: 0;
   }
 }

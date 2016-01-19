@@ -405,12 +405,17 @@ th {
 }
 @keyframes blastOff {
   0% {
+    -webkit-transform: rotateZ(0deg);
+    opacity: 1;
+  }
+  10% {
     -webkit-transform: rotateZ(360deg);
     bottom: 10%;
   }
   100% {
     -webkit-transform: rotateZ(360deg);
     bottom: 150%;
+    opacity: 1;
   }
 }
 html, body {
@@ -450,6 +455,7 @@ p {
 
 a {
   text-decoration: none;
+  color: black;
   padding-bottom: 5px;
   border-bottom: 2px solid #fafafa;
   font-weight: 400;
@@ -506,9 +512,11 @@ a:visited {
   left: 50%;
   margin-left: -12px;
   width: 25px;
+  opacity: 1;
 }
 .shuttle.blast-off {
   animation: blastOff 3s ease-out;
+  opacity: 0;
 }
 
 .apod-image {

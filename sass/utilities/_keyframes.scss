@@ -13,6 +13,11 @@
 // For shuttle
 @keyframes blastOff {
   0% {
+    -webkit-transform: rotateZ(0deg);
+    opacity: 1;
+  }
+
+  10% {
     -webkit-transform: rotateZ(360deg);
     bottom: 10%;
   }
@@ -20,5 +25,6 @@
   100% {
     -webkit-transform: rotateZ(360deg);
     bottom: 150%;
+    opacity: 1;
   }
 }
