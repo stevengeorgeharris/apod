@@ -15,10 +15,15 @@ p {
 
 a {
   text-decoration: none;
+  color: black;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #fafafa;
+  font-weight: $font-medium;
+  transition: all 200ms ease-in;
 
   &:hover {
     text-decoration: none;
-    font-weight: $font-light;
+    border-bottom: 2px solid $popColour;
   }
 
   &:visited {

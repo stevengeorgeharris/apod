@@ -2,7 +2,7 @@
   $time: 500ms;
   height: 100%;
   width: 100%;
-  background-color: #FED56C;
+  background-color: $popColour;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -27,6 +27,12 @@
     font-size: 2em;
     font-weight: $font-medium;
     cursor: pointer;
+    border-bottom: 2px solid $popColour;
+    transition: all 200ms ease-in;
+
+    &:hover {
+      border-bottom: 2px solid black;
+    }
   }
 
   .apod-info__container {

@@ -71,11 +71,14 @@ var apod = {
       imageURL = returnedData.hdurl;
     }
     setTimeout(function() {
-      $('.header').addClass('reduce');
+      $('.shuttle').addClass('blast-off');
     }, 1000);
     setTimeout(function() {
+      $('.to-fade-in').addClass('faded');
+    }, 3000);
+    setTimeout(function() {
       $('.comet').addClass('fly');
-    }, 2000);
+    }, 4000);
     $image.attr('src', imageURL);
   },
   updateInfo: function() {
