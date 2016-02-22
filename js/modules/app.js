@@ -1,7 +1,7 @@
 /**
 * Astronomy Picture of the Day
 * @author Steven Harris
-* @version 1.0.0
+* @version 1.0.2
 *
 */
 
@@ -14,7 +14,9 @@ var apod = {
   storeReturnedDate: "",
   storeExplanation: "",
   sameImage: false,
+  sameVideo: false,
   storeDate: localStorage.date,
+  storeMedia: localStorage.media,
   url: "https://api.nasa.gov/planetary/apod?concept_tags=True&api_key=SMSSVoBpeTlTKc8nGXKVcVThKkjHsZSvTx1Xq1Tj",
   /**
    * Here we want to record the current date and store it.
@@ -30,7 +32,12 @@ var apod = {
     var checkThis = day + " " + month;
     if (checkThis === this.storeDate) {
       this.sameImage = true;
-      this.updateImage();
+      this.sameVideo = true;
+      if (this.storeMedia == "video") {
+        this.updateVideo();
+      } else {
+        this.updateImage();
+      }
       this.updateInfo();
     } else {
       this.call(this.url);
@@ -46,7 +53,11 @@ var apod = {
       url: url
     }).done(function(data) {
       returnedData = data;
-      apod.updateImage();
+      if (returnedData.media_type == "video") {
+        apod.updateVideo();
+      } else {
+        apod.updateImage();
+      }
       apod.updateInfo();
       apod.storeLocally();
     });
@@ -56,20 +67,47 @@ var apod = {
     storeTitle = returnedData.title;
     storeReturnedDate = returnedData.date;
     storeExplanation = returnedData.explanation;
+    storeMediaType = returnedData.media_type;
+    storeVideoUrl = returnedData.url;
 
-    localStorage.setItem('image', storeImage);
+    if (storeImage) {
+      localStorage.setItem('image', storeImage);
+    }
+    if (storeVideoUrl) {
+      localStorage.setItem('video', storeVideoUrl);
+    }
     localStorage.setItem('title', storeTitle);
     localStorage.setItem('returnedDate', storeReturnedDate);
     localStorage.setItem('explanation', storeExplanation);
+    localStorage.setItem('media', storeMediaType);
+  },
+  updateVideo: function() {
+    var videoSource;
+    var $iframe = $('.apod-video-embed');
+    if (this.sameVideo === true) {
+      videoSource = localStorage.getItem('video');
+    } else {
+      videoSource = returnedData.url;
+    }
+    $iframe.attr('src', videoSource);
+    $('.apod-image').addClass('hide');
+    this.animation();
   },
   updateImage: function() {
     var imageURL;
-    var $image = $('.apod-image img');
+    var $imageCont = $('.apod-image');
+    var img = $('<img>');
     if (this.sameImage === true) {
       imageURL = localStorage.getItem('image');
     } else {
       imageURL = returnedData.hdurl;
     }
+    img.attr('src', imageURL);
+    $imageCont.append(img);
+    $('.apod-video-embed').addClass('hide');
+    this.animation();
+  },
+  animation: function() {
     setTimeout(function() {
       $('.shuttle').addClass('blast-off');
     }, 1000);
@@ -79,7 +117,6 @@ var apod = {
     setTimeout(function() {
       $('.comet').addClass('fly');
     }, 4000);
-    $image.attr('src', imageURL);
   },
   updateInfo: function() {
     var $titleCont = $('.apod-info__title');

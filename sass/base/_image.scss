@@ -3,6 +3,11 @@
   max-width: 800px;
   margin: 0 auto 10% auto;
 
+  &.hide {
+    margin: 0;
+    display: none;
+  }
+
   img {
     width: 100%;
     height: auto;
