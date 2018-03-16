@@ -1,0 +1,8 @@
+.cursor {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    display: block;
+    background-color: #FF6600;
+    border-radius: 50%;
+};

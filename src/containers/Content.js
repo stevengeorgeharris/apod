@@ -35,6 +35,8 @@ export default class Content extends React.Component {
         switch (data.media_type) {
             case 'image':
                 return <Image data={ data } />;
+            default:
+                break;
         }
     }
 
@@ -43,7 +45,7 @@ export default class Content extends React.Component {
 
         return data ? (
             <section className="content">
-                { this.getTemplate() }
+                {/* { this.getTemplate() } */}
             </section>
         ) : null;
     }
